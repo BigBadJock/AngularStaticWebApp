@@ -1,0 +1,50 @@
+<app-card [hidHeader]="true" cardClass="flat-card" blockClass="p-0">
+  <div class="row-table">
+    <div class="col-sm-6 card-body br" (click)="goToSites()">
+      <div class="row">
+        <div class="col-sm-4">
+          <i class="fas fa-map-marker-alt text-c-green mb-1 d-block"></i>
+        </div>
+        <div class="col-sm-8 text-md-center">
+          <h5>{{organisationStats.noOfSites}}</h5>
+          <span>Sites</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <app-apex-chart chartID="letChart" [chartConfig]="this.rentalChartOptions" width="100px"></app-apex-chart>
+        </div>
+        <div class="col-sm-8 text-md-center">
+          <h5>{{this.rentedPlotPercentage | percent : '2.2'}}</h5>
+          <span>Rented Plots</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row-table">
+    <div class="col-sm-6 card-body br">
+      <div class="row">
+        <div class="col-sm-4">
+          <i class="fas fa-seedling text-c-green mb-1 d-block"></i>
+        </div>
+        <div class="col-sm-8 text-md-center">
+          <h5>{{organisationStats.noOfPlots}}</h5>
+          <span>Plots</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <i class="far fa-frown text-c-red mb-1 d-block"></i>
+        </div>
+        <div class="col-sm-8 text-md-center">
+          <h5>{{organisationStats.unletPlots}}</h5>
+          <span>Unlet Plots</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-card>

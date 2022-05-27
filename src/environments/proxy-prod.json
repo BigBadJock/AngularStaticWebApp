@@ -1,0 +1,16 @@
+{
+  "/openweathermap/*": {
+    "target": "http://api.openweathermap.org/data/2.5/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "/openweathermap/*": ""
+    }
+  },
+  "/api/*": {
+    "target": "https://allotment-dev-uks-allotment-api.azurewebsites.net/",
+    "secure": true,
+    "logLevel": "debug"
+  }
+}

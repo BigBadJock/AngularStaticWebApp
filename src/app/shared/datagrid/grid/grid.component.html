@@ -1,0 +1,21 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-hover table-sm">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th *ngFor="let column of columnDefinitions">
+          {{column.header}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let row of data | slice: (this.pagination.page-1) * this.pagination.pageSize : this.pagination.page * this.pagination.pageSize; index as i">
+        <td scope="row">{{ (this.pagination.page -1) * this.pagination.pageSize + i + 1 }}</td>
+
+        <td *ngFor=" let column of columnDefinitions">
+          <app-gridcell [columnDefinition]="column" [data]="row[column.name]" [id]="row['id']"></app-gridcell>
+        </td>
+      </tr>
+    </tbody>
+  </table>

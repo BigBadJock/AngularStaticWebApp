@@ -1,0 +1,202 @@
+<div class="modal-header">
+  <h5 class="modal-title"><i class="icon feather icon-edit-2"></i> Update Waiting List Entry</h5>
+  <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="close()"><span
+      aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="form" autocomplete="off" novalidate>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group mb-3">
+          <label for="title">First Name</label>
+          <input type="text" class="form-control" formControlName="title" placeholder="Title" required [ngClass]="{ 
+                                                  'is-invalid' : title.touched && title.invalid, 
+                                                  'is-valid': title.touched && ! title.invalid 
+                                                }">
+          <div class="invalid-feedback" *ngIf="(title.dirty || title.touched) && title.invalid">
+            <div *ngIf="title.errors?.required">
+              Title is required
+            </div>
+            <div *ngIf="title.errors?.minlength">
+              Title must be at least 2 characters long.
+            </div>
+            <div *ngIf="title.errors?.maxlength">
+              Title must be no more than 20 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" required
+            [ngClass]="{ 
+                                              'is-invalid' : firstName.touched && firstName.invalid, 
+                                              'is-valid': firstName.touched && ! firstName.invalid 
+                                            }">
+          <div class="invalid-feedback" *ngIf="(firstName.dirty || firstName.touched) && firstName.invalid">
+            <div *ngIf="firstName.errors?.required">
+              First Name is required
+            </div>
+            <div *ngIf="firstName.errors?.minlength">
+              First Name must be at least 3 characters long.
+            </div>
+            <div *ngIf="firstName.errors?.maxlength">
+              First Name must be no more than 20 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name" required [ngClass]="{ 
+                                                  'is-invalid' : lastName.touched && lastName.invalid, 
+                                                  'is-valid': lastName.touched && ! lastName.invalid 
+                                                }">
+          <div class="invalid-feedback" *ngIf="(lastName.dirty || lastName.touched) && lastName.invalid">
+            <div *ngIf="lastName.errors?.required">
+              Last Name is required
+            </div>
+            <div *ngIf="lastName.errors?.minlength">
+              Last Name must be at least 3 characters long.
+            </div>
+            <div *ngIf="lastName.errors?.maxlength">
+              Last Name must be no more than 20 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="phone">Phone</label>
+          <input type="text" class="form-control" formControlName="phone" placeholder="Phone" required [ngClass]="{ 
+                                                                  'is-invalid' : phone.touched && phone.invalid, 
+                                                                  'is-valid': phone.touched && ! phone.invalid 
+                                                                }">
+          <div class="invalid-feedback" *ngIf="(phone.dirty || phone.touched) && phone.invalid">
+            <div *ngIf="phone.errors?.required">
+              Phone is required
+            </div>
+            <div *ngIf="phone.errors?.minlength">
+              Phone must be at least 9 characters long.
+            </div>
+            <div *ngIf="phone.errors?.maxlength">
+              Phone must be no more than 12 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" formControlName="email" placeholder="Email" required [ngClass]="{ 
+                                                                          'is-invalid' : email.touched && email.invalid, 
+                                                                          'is-valid': email.touched && ! email.invalid 
+                                                                        }">
+          <div class="invalid-feedback" *ngIf="(email.dirty || email.touched) && email.invalid">
+            <div *ngIf="email.errors?.required">
+              Email is required
+            </div>
+            <div *ngIf="email.errors?.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="form-group mb-3">
+          <label for="addressLine1">Address Line 1</label>
+          <input type="text" class="form-control" formControlName="addressLine1" placeholder="Address Line 1" required
+            [ngClass]="{ 
+                          'is-invalid' : addressLine1.touched && addressLine1.invalid, 
+                          'is-valid': addressLine1.touched && ! addressLine1.invalid 
+                        }">
+          <div class="invalid-feedback" *ngIf="(addressLine1.dirty || addressLine1.touched) && addressLine1.invalid">
+            <div *ngIf="addressLine1.errors?.required">
+              Address Line 1 is required
+            </div>
+            <div *ngIf="addressLine1.errors?.minlength">
+              Address Line 1 must be at least 3 characters long.
+            </div>
+            <div *ngIf="addressLine1.errors?.maxlength">
+              Address Line 1 must be no more than 100 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="addressLine2">Address Line 2</label>
+          <input type="text" class="form-control" formControlName="addressLine2" placeholder="Address Line 2" required
+            [ngClass]="{ 
+                                                          'is-invalid' : addressLine2.touched && addressLine2.invalid, 
+                                                          'is-valid': addressLine2.touched && ! addressLine2.invalid 
+                                                        }">
+          <div class="invalid-feedback" *ngIf="(addressLine2.dirty || addressLine2.touched) && addressLine2.invalid">
+            <div *ngIf="addressLine2.errors?.required">
+              Address Line 2 is required
+            </div>
+            <div *ngIf="addressLine2.errors?.minlength">
+              Address Line 2 must be at least 3 characters long.
+            </div>
+            <div *ngIf="addressLine2.errors?.maxlength">
+              Address Line 2 must be no more than 100 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="addressLine3">Address Line 3</label>
+          <input type="text" class="form-control" formControlName="addressLine3" placeholder="Address Line 3" [ngClass]="{ 
+                          'is-invalid' : addressLine3.touched && addressLine3.invalid, 
+                          'is-valid': addressLine3.touched && ! addressLine3.invalid 
+                        }">
+          <div class="invalid-feedback" *ngIf="(addressLine3.dirty || addressLine3.touched) && addressLine3.invalid">
+            <div *ngIf="addressLine3.errors?.maxlength">
+              Address Line 3 must be no more than 50 characters long.
+            </div>
+            <div>
+              {{addressLine3.errors | json}}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="addressLine4">Address Line 4</label>
+          <input type="text" class="form-control" formControlName="addressLine4" placeholder="Address Line 4" [ngClass]="{ 
+                          'is-invalid' : addressLine4.touched && addressLine4.invalid, 
+                          'is-valid': addressLine4.touched && ! addressLine4.invalid 
+                        }">
+          <div class="invalid-feedback" *ngIf="(addressLine4.dirty || addressLine4.touched) && addressLine4.invalid">
+            <div *ngIf="addressLine4.errors?.maxlength">
+              Address Line 4 must be no more than 50 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="postCode">Post Code</label>
+          <input type="text" class="form-control" formControlName="postCode" placeholder="Post Code" required [ngClass]="{ 
+                    'is-invalid' : postCode.touched && postCode.invalid, 
+                    'is-valid': postCode.touched && ! postCode.invalid 
+                  }">
+          <div class="invalid-feedback" *ngIf="(postCode.dirty || postCode.touched) && postCode.invalid">
+            <div *ngIf="postCode.errors?.required">
+              Post Code is required
+            </div>
+            <div *ngIf="postCode.errors?.pattern">
+              Post Code must be valid
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </form>
+
+</div>
+<div class="modal-footer">
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="close()">Close</button>
+    <button id="saveButton" class="btn btn-primary" data-dismiss="modal" (click)="submit()"
+      [disabled]="!form.valid">Save changes</button>
+  </div>
+</div>

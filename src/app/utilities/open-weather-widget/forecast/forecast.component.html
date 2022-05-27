@@ -1,0 +1,36 @@
+<app-card [hidHeader]="true" cardClass="flat-card" blockClass="p-0" *ngIf="forecast">
+  <div class="row-table">
+
+    <div class="col-md-12 card-body br">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="row">
+            <i class="{{current.newIcon}} mb-2 d-block"></i>
+          </div>
+          <div class="row">
+            <h5>
+              {{forecast?.current?.temp| number: '1.0-0'}} &#8451;
+            </h5>
+          </div>
+          <div class="row">{{currentDay}}</div>
+
+        </div>
+        <div class="col-sm-2 text-md-center" *ngFor="let day of this.dailyForecasts | slice:1:5">
+          <div class="row">
+            <i class="{{day.newIcon}} mb-2 d-block"></i>
+          </div>
+          <div class="row">
+            <h5>
+              {{day.temp['day'] | number: '1.0-0'}} &#8451;
+            </h5>
+          </div>
+          <div class="row">{{day.day}}</div>
+        </div>
+      </div>
+      <div class="row">{{currentDate | date:'dd/MM/yyyy HH:mm'}}</div>
+    </div>
+  </div>
+</app-card>
+<app-card [hidHeader]="true" cardClass="flat-card" blockClass="p-0" *ngIf="! forecast">
+  <p>Unable to connect to weather service</p>
+</app-card>

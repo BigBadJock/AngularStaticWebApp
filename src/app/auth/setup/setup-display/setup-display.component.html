@@ -1,0 +1,280 @@
+<script src="https://getaddress-cdn.azureedge.net/scripts/jquery.getAddress-4.0.0.min.js"></script>
+
+<div class="row">
+  <div class="col-10">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Set Up Organisation</h4>
+        <aw-wizard>
+
+          <aw-wizard-step stepTitle="Organisation Details">
+            <h1>Great, we're off and running!</h1>
+            <h2>First we need some information about your organisation.</h2>
+
+            <form [formGroup]="setupForm" autocomplete="off" novalidate>
+              <!-- organisation -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="organisation" placeholder="Organisation Name"
+                  required [ngClass]="{ 
+                    'is-invalid' : organisation.touched && organisation.invalid, 
+                    'is-valid': organisation.touched && ! organisation.invalid 
+                  }">
+                <div class="invalid-feedback"
+                  *ngIf="(organisation.dirty || organisation.touched) && organisation.invalid">
+                  <div *ngIf="organisation.errors?.required">
+                    Organisation Name is required
+                  </div>
+                  <div *ngIf="organisation.errors?.minlength">
+                    Organisation Name must be at least 5 characters long.
+                  </div>
+                  <div *ngIf="organisation.errors?.maxlength">
+                    Organisation Name must be no more than 100 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Address Search-->
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" formControlName="postCodeSearch"
+                  placeholder="Search for postcode">
+                <div class="input-group-append">
+                  <button class="btn btn-success" (click)="searchForAddress()">Search</button>
+                </div>
+              </div>
+
+              <ng-container *ngIf="searchAddresses">
+                <select formControlName="selectedAddress" class="form-control" (change)="selectAddress()">
+                  <option *ngFor="let address of searchAddresses.addresses; let i=index;" [ngValue]="address">
+                    {{address.line_1}}
+                  </option>
+                </select>
+              </ng-container>
+
+              <hr>
+              <!-- Address Line 1 -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="addressLine1" placeholder="Address Line 1"
+                  required [ngClass]="{ 
+                    'is-invalid' : addressLine1.touched && addressLine1.invalid, 
+                    'is-valid': addressLine1.touched && ! addressLine1.invalid 
+                  }">
+                <div class="invalid-feedback"
+                  *ngIf="(addressLine1.dirty || addressLine1.touched) && addressLine1.invalid">
+                  <div *ngIf="addressLine1.errors?.required">
+                    Address Line 1 is required
+                  </div>
+                  <div *ngIf="addressLine1.errors?.minlength">
+                    Address Line 1 must be at least 5 characters long.
+                  </div>
+                  <div *ngIf="addressLine1.errors?.maxlength">
+                    Address Line 1 must be no more than 100 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Address Line 2 -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="addressLine2" placeholder="Address Line 2"
+                  [ngClass]="{ 
+                    'is-invalid' : addressLine2.touched && addressLine2.invalid, 
+                    'is-valid': addressLine2.touched && ! addressLine2.invalid 
+                  }">
+                <div class="invalid-feedback"
+                  *ngIf="(addressLine2.dirty || addressLine2.touched) && addressLine2.invalid">
+
+                  <div *ngIf="addressLine2.errors?.maxlength">
+                    Address Line 2 must be no more than 200 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Address Line 3 -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="addressLine3" placeholder="Address Line 3"
+                  [ngClass]="{ 
+                    'is-invalid' : addressLine3.touched && addressLine3.invalid, 
+                    'is-valid': addressLine3.touched && ! addressLine3.invalid 
+                  }">
+                <div class="invalid-feedback"
+                  *ngIf="(addressLine3.dirty || addressLine3.touched) && addressLine3.invalid">
+                  <div *ngIf="addressLine3.errors?.maxlength">
+                    Address Line 3 must be no more than 300 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Address Line 4 -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="addressLine4" placeholder="Address Line 4"
+                  [ngClass]="{ 
+                    'is-invalid' : addressLine4.touched && addressLine4.invalid, 
+                    'is-valid': addressLine4.touched && ! addressLine4.invalid 
+                  }">
+                <div class="invalid-feedback"
+                  *ngIf="(addressLine4.dirty || addressLine4.touched) && addressLine4.invalid">
+                  <div *ngIf="addressLine4.errors?.maxlength">
+                    Address Line 4 must be no more than 100 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <!-- locality -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="locality" placeholder="Locality"
+                  [ngClass]="{ 'is-invalid' : locality.touched && locality.invalid, 'is-valid': locality.touched && ! locality.invalid }">
+                <div class="invalid-feedback" *ngIf="(locality.dirty || locality.touched) && locality.invalid">
+                  <div *ngIf="locality.errors?.maxlength">
+                    Locality must be no more than 100 characters long.
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Town -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="townOrCity" placeholder="Town or City" required
+                  [ngClass]="{ 
+                    'is-invalid' : townOrCity.touched && townOrCity.invalid, 
+                    'is-valid': townOrCity.touched && ! townOrCity.invalid 
+                  }">
+                <div class="invalid-feedback" *ngIf="(townOrCity.dirty || townOrCity.touched) && townOrCity.invalid">
+                  <div *ngIf="townOrCity.errors?.required">
+                    townOrCity is required
+                  </div>
+                  <div *ngIf="townOrCity.errors?.minlength">
+                    townOrCity must be at least 2 characters long.
+                  </div>
+                  <div *ngIf="townOrCity.errors?.maxlength">
+                    townOrCity must be no more than 100 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <!-- county -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="county" placeholder="County" required
+                  [ngClass]="{ 'is-invalid' : county.touched && county.invalid, 'is-valid': county.touched && ! county.invalid }">
+                <div class="invalid-feedback" *ngIf="(county.dirty || county.touched) && county.invalid">
+                  <div *ngIf="county.errors?.maxlength">
+                    County must be no more than 100 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <!-- country -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="country" placeholder="Country" required
+                  [ngClass]="{ 'is-invalid' : country.touched && country.invalid, 'is-valid': country.touched && ! country.invalid }">
+                <div class="invalid-feedback" *ngIf="(country.dirty || country.touched) && country.invalid">
+                  <div *ngIf="country.errors?.required">
+                    Country is required
+                  </div>
+                  <div *ngIf="country.errors?.minlength">
+                    Country must be at least 5 characters long.
+                  </div>
+                  <div *ngIf="country.errors?.maxlength">
+                    Country must be no more than 100 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <!-- post code -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="postcode" placeholder="PostCode" required
+                  [ngClass]="{ 'is-invalid' : postcode.touched && postcode.invalid, 'is-valid': postcode.touched && ! postcode.invalid }">
+                <div class="invalid-feedback" *ngIf="(postcode.dirty || postcode.touched) && postcode.invalid">
+                  <div *ngIf="postcode.errors?.required">
+                    Post Code is required
+                  </div>
+                  <div *ngIf="postcode.errors?.minlength">
+                    Post Code must be at least 8 characters long.
+                  </div>
+                  <div *ngIf="postcode.errors?.maxlength">
+                    Post Code must be no more than 9 characters long.
+                  </div>
+                </div>
+              </div>
+
+            </form>
+
+
+            <button type="button" [disabled]="!setupForm.valid" class="btn btn-primary float-right" awNextStep>
+              Further Details <i class="fas fa-arrow-right"></i>
+            </button>
+          </aw-wizard-step>
+
+          <aw-wizard-step stepTitle="Settings">
+            <h2>Now we need some information on how your allotments are managed:</h2>
+
+            <form [formGroup]="settingsForm" autocomplete="off" novalidate>
+              <!-- measurements -->
+              <div class="form-group mb-3">
+                <label>Measurements</label>
+                <select id="measurements" class="form-control" formControlName="measurement">
+                  <option value="ft">Square Feet</option>
+                  <option value="m">Square Meteres</option>
+                  <option value="r">Rods</option>
+                  <option value="p">Poles</option>
+                  <option value="q">Perches</option>
+                </select>
+              </div>
+
+              <!-- Cost -->
+              <div class="form-group mb-3">
+                <label>Cost</label>
+                <div class="input-group">
+                  <div class="input-group-prepend"><span class="input-group-text">£</span></div>
+                  <input type="text" class="form-control" formControlName="cost" placeholder="Cost" required
+                    [ngClass]="{ 'is-invalid' : cost.touched && cost.invalid, 'is-valid': cost.touched && ! cost.invalid }">
+                  <div class="invalid-feedback" *ngIf="(cost.dirty || cost.touched) && cost.invalid">
+                    <div *ngIf="cost.errors?.required">
+                      Cost is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--General Invoice Start Date-->
+              <div class="form-group mb-3">
+                <label>Year Start</label>
+                <input type="date" placeholder="Year Start" formControlName="yearStart" class="form-control">
+              </div>
+
+            </form>
+
+
+            <div class="btn-group float-right">
+              <button class="btn btn-default" awPreviousStep><i class="fas fa-arrow-left"></i> Back</button>
+              <button type="button" class="btn btn-primary float-right" [disabled]="!settingsForm.valid" awNextStep
+                (click)="submitForm()">
+                Finish <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </aw-wizard-step>
+
+          <!-- <aw-wizard-step stepTitle="Site Details">
+            <h2>Enter details about sites</h2>
+
+            <div class="btn-group float-right">
+              <button class="btn btn-default" awPreviousStep><i class="fas fa-arrow-left"></i> Back</button>
+              <button type="button" class="btn btn-primary float-right" awNextStep>
+                Add Payment Details <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </aw-wizard-step> -->
+          <!-- 
+          <aw-wizard-step stepTitle="Payment Details">
+            <h2>Enter Payment Detail</h2>
+
+            <div class="btn-group float-right">
+              <button class="btn btn-default" awPreviousStep><i class="fas fa-arrow-left"></i> Back</button>
+              <button type="button" class="btn btn-primary float-right" awNextStep>
+                Finish <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </aw-wizard-step> -->
+        </aw-wizard>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<ng-container *ngIf="this.history">
+  <ng-container *ngFor="let breadcrumb of history; let last = last">
+    <div class="page-header" *ngIf="last && history.length > 0">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <div class="page-header-title">
+              <ng-container *ngFor="let breadcrumb of history; let last = last">
+                <h5 class="m-b-10" *ngIf="last">{{breadcrumb.title}}</h5>
+              </ng-container>
+            </div>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a [routerLink]="['/dashboard']"><i class="feather icon-home"></i></a>
+              </li>
+              <ng-container *ngFor="let breadcrumb of history">
+                <li class="breadcrumb-item" *ngIf="breadcrumb.url">
+                  <a [routerLink]="breadcrumb.url">{{breadcrumb.title}}</a>
+                </li>
+                <li class="breadcrumb-item" *ngIf="! breadcrumb.url">
+                  <a href="javascript:">{{breadcrumb.title}}</a>
+                </li>
+              </ng-container>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

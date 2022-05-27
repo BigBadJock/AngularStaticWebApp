@@ -1,0 +1,8 @@
+.float-button{
+  position: fixed;
+  bottom: 5%;
+  right:20%;
+  transition: all 0.2s ease-in 0s;//this is the key attribute
+  z-index: 9999;
+  cursor: pointer;
+}

@@ -1,0 +1,23 @@
+<app-card [hidHeader]="true" cardClass="flat-card" blockClass="p-0" *ngIf="currentWeather">
+  <div class="row-table">
+
+    <div class="col-sm-6 card-body br">
+      <div class="row">
+        <div class="col-sm-4">
+          <i class="{{icon}} mb-2 d-block"></i>
+        </div>
+        <div class="col-sm-8 text-md-center">
+          <h5>{{currentWeather?.main.temp | number: '1.0-0'}} &#8451;</h5>
+          <span>{{currentWeather?.name}}</span>
+
+          <div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-card>
+<app-card [hidHeader]="true" cardClass="flat-card" blockClass="p-0" *ngIf="! currentWeather">
+  <p>Weather Service not available</p>
+</app-card>

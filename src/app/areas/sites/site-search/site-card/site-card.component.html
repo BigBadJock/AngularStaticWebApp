@@ -1,0 +1,12 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{site.name}}</h5>
+    <p class="card-text">
+      Number of Plots: {{site.numberOfPlots}} <br>
+      Unlet Plots: {{site.unletPlots}}<br>
+      Uncultivated Plots: {{ site.uncultivatedPlots}}<br>
+    </p>
+  </div>
+  <div class="card-body">
+    <a [routerLink]="['/sites/display', site.id]" class="card-link" target="_self">View</a>
+  </div>

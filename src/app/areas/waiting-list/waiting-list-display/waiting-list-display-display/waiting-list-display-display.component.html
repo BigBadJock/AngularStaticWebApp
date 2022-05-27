@@ -1,0 +1,78 @@
+<div class="row" *ngIf="entry">
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <app-card [hidHeader]="true">
+      <h5 class="card-title">{{entry?.title}} {{entry?.firstName}} {{entry?.lastName}} </h5>
+      <div class="card-text">
+        <table>
+          <tr>
+            <td>Address</td>
+            <td><strong>{{entry.addressLine1}}</strong></td>
+          </tr>
+          <tr *ngIf="entry.addressLine2">
+            <td></td>
+            <td><strong>{{entry.addressLine2}}</strong></td>
+          </tr>
+          <tr *ngIf="entry.addressLine3">
+            <td></td>
+            <td><strong>{{entry.addressLine3}}</strong></td>
+          </tr>
+          <tr *ngIf="entry.addressLine4">
+            <td></td>
+            <td><strong>{{entry.addressLine4}}</strong></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><strong>{{entry.postCode}}</strong></td>
+          </tr>
+          <tr>
+            <td>Phone:</td>
+            <td><strong>{{entry.phone}}</strong></td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td><strong>{{entry.email}}</strong></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Date Added:</td>
+            <td><strong>{{entry.created | date : 'dd/MM/yyyy'}}</strong></td>
+          </tr>
+        </table>
+      </div>
+      <a href="javascript:" class="card-link" (click)="update()">Edit</a>
+      <a href="javascript:" class="card-link">Delete</a>
+    </app-card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <app-card [hidHeader]="true">
+      <h5 class="card-title">Sites</h5>
+      <div class="card-text">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>Interested</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let site of sites">
+              <td>{{site.siteName}}</td>
+              <td>
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="interested" [checked]="site.interested">
+                  <label for="" class="custom-control-label"></label>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <a href="javascript:" class="card-link">Edit</a>
+    </app-card>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<app-card [hidHeader]="true">
+  <h5 class="card-title">Plot: {{plot.name}}</h5>
+  <div class="card-text">
+    <table>
+      <tr>
+        <td>Size:</td>
+        <td><strong>{{plot.size}} Rods</strong></td>
+      </tr>
+      <tr>
+        <td>Cultivation Status:</td>
+        <td><strong>{{isUncultivated}}</strong></td>
+      </tr>
+    </table>
+    <br>
+  </div>
+  <a href="javascript:" class="card-link" (click)="edit()">Edit</a>
+  <a href="javascript:" class="card-link">Delete</a>
+</app-card>

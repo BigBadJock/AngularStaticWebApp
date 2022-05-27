@@ -1,0 +1,25 @@
+<ng-container *ngIf="organisation">
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      Organisation
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{organisation.name}}</h5>
+      <p class="card-text">
+        {{organisation.addressLine1}} <br>
+        <ng-container *ngIf="organisation.addressLine2">{{organisation.addressLine2}} <br></ng-container>
+        <ng-container *ngIf="organisation.addressLine3">{{organisation.addressLine3}} <br></ng-container>
+        <ng-container *ngIf="organisation.addressLine4">{{organisation.addressLine4}} <br></ng-container>
+        <ng-container *ngIf="organisation.locality">{{organisation.locality}} <br></ng-container>
+        {{organisation.townOrCity}}<br>
+        <ng-container *ngIf="organisation.county">{{organisation.county}} <br></ng-container>
+        {{organisation.country}}<br>
+        {{organisation.postCode}}
+      </p>
+    </div>
+    <div class="card-body">
+      <a href="" class="card-link">Update</a>
+    </div>
+  </div>
+
+</ng-container>

@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-3">
+    <app-card [hidHeader]="true">
+      <h5 class="card-title">{{site?.name}}</h5>
+      <p class="card-text">
+        Number of Plots: {{site?.numberOfPlots}} <br>
+        Unlet Plots: {{site?.unletPlots}}<br>
+        Uncultivated Plots: {{ site?.uncultivatedPlots}}<br>
+      </p>
+      <a href="javascript:" class="card-link" (click)="editSiteClick()">Edit</a>
+      <a href="javascript:" class="card-link">Delete</a>
+    </app-card>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-3">
+    <app-card [hidHeader]="true">
+      <h5 class="card-title">Site Representatives:</h5>
+      <p class="card-text">
+        Bob Smith <br>
+        Dave Jones <br>
+      </p>
+      <a href="javascript:" class="card-link">Edit</a>
+    </app-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <app-card cardTitle="Plots" cardClass="table-card" blockClass="p-0">
+
+      <app-datagrid [columnDefinitions]="columnDefinitions" [data]="displayPlots">
+
+      </app-datagrid>
+    </app-card>
+  </div>
+</div>

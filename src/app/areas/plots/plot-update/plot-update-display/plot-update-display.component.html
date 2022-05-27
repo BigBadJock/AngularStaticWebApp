@@ -1,0 +1,48 @@
+<div class="modal-header">
+  <h5 class="modal-title"><i class="icon feather icon-edit-2"></i> Edit</h5>
+  <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="close()"><span
+      aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="plotForm" autocomplete="off" novalidate>
+    <!-- name -->
+    <div class="form-group mb-3">
+      <label for="plotName">Plot Name</label>
+      <input type="text" class="form-control" formControlName="plotName" placeholder="Plot Name" required [ngClass]="{ 
+                                        'is-invalid' : plotName.touched && plotName.invalid, 
+                                        'is-valid': plotName.touched && ! plotName.invalid 
+                                      }">
+      <div class="invalid-feedback" *ngIf="(plotName.dirty || plotName.touched) && plotName.invalid">
+        <div *ngIf="plotName.errors?.required">
+          Plot Name is required
+        </div>
+        <div *ngIf="plotName.errors?.minlength">
+          Plot Name must be at least 3 characters long.
+        </div>
+        <div *ngIf="plotName.errors?.maxlength">
+          Plot Name must be no more than 10 characters long.
+        </div>
+      </div>
+    </div>
+    <!-- size -->
+    <div class="form-group mb-3">
+      <label for="plotSize">Size</label>
+      <input type="number" class="form-control" formControlName="plotSize" placeholder="Size" required [ngClass]="{ 
+                                            'is-invalid' : plotSize.touched && plotSize.invalid, 
+                                            'is-valid': plotSize.touched && ! plotSize.invalid 
+                                          }">
+      <div class="invalid-feedback" *ngIf="(plotSize.dirty || plotSize.touched) && plotSize.invalid">
+        <div *ngIf="plotSize.errors?.required">
+          Size is required
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+<div class="modal-footer">
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="close()">Close</button>
+    <button id="saveButton" class="btn btn-primary" data-dismiss="modal" (click)="save()">Save changes</button>
+  </div>
+</div>

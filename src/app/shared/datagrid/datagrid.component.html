@@ -1,0 +1,3 @@
+<app-grid [columnDefinitions]="columnDefinitions" [data]="data" [pagination]="pagination"></app-grid>
+<pagination [totalItems]="pagination.recordCount" (pageChanged)="paginationChanged($event)" [boundaryLinks]="true"
+  [rotate]="true" [maxSize]="10"></pagination>

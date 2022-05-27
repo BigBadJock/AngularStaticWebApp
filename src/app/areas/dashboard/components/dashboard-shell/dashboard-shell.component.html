@@ -1,0 +1,355 @@
+<div class="row" *ngIf="organisationStats">
+  <!-- table card start -->
+  <div class="col-md-12 col-xl-4">
+    <app-dashboard-site-info [organisationStats]="organisationStats"></app-dashboard-site-info>
+  </div>
+
+  <div class="col-md-12 col-xl-4">
+    <app-card [hidHeader]="true" cardClass="flat-card" blockClass="p-0">
+      <div class="row-table">
+        <div class="col-sm-6 card-body br">
+          <div class="row">
+            <div class="col-sm-4">
+              <i class="fas fa-clipboard-list text-c-green mb-1 d-block"></i>
+            </div>
+            <div class="col-sm-8 text-md-center">
+              <h5>24</h5>
+              <span>Waiting List</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 card-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <i class="fas fa-hand-holding text-c-green mb-1 d-block"></i>
+            </div>
+            <div class="col-sm-8 text-md-center">
+              <h5>5</h5>
+              <span>Offers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row-table">
+        <div class="col-sm-6 card-body br">
+          <div class="row">
+            <div class="col-sm-4">
+              <i class="far fa-frown text-c-red mb-1 d-block"></i>
+            </div>
+            <div class="col-sm-8 text-md-center">
+              <h5>30</h5>
+              <span>Unpaid Plots</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 card-body">
+          <div class="row">
+            <!-- <div class="col-sm-4">
+              <app-apex-chart chartID="uncultivatedChart" [chartConfig]="this.uncultivatedChartOptions">
+              </app-apex-chart>
+            </div> -->
+            <div class="col-sm-4">
+              <i class="fas fa-skull-crossbones text-c-green mb-1 d-block"></i>
+            </div>
+            <div class="col-sm-8 text-md-center">
+              <h5>45</h5>
+              <span>Uncultivated</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+
+
+  <!-- <div class="col-md-12 col-xl-2">
+    <app-current-weather [town]="town"></app-current-weather>
+  </div>
+
+  <div class="col-md-12 col-xl-4">
+    <app-forecast [lat]="lat" [lon]="lon"></app-forecast>
+  </div> -->
+
+  <!--table card end-->
+  <div class="col-lg-8 col-md-12">
+
+    <div class="row">
+      <div class="col-md-4">
+        <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-green">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h4 class="text-c-green">£6,780</h4>
+              <h6 class="text-muted m-b-0">Invoices</h6>
+            </div>
+            <div class="col-4 text-right">
+              <i class="fas fa-pound-sign f-28"></i>
+            </div>
+          </div>
+          <div class="app-card-footer">
+            <div class="row align-items-center">
+              <div class="col-9">
+                <p class="text-white m-b-0"></p>
+              </div>
+              <div class="col-3 text-right">
+                <i class="feather icon-trending-up text-white f-16"></i>
+              </div>
+            </div>
+          </div>
+        </app-card>
+      </div>
+      <div class="col-md-4">
+        <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-red">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h4 class="text-c-green">290</h4>
+              <h6 class="text-muted m-b-0">Invoices</h6>
+            </div>
+            <div class="col-4 text-right">
+              <i class="feather icon-file-text f-28"></i>
+            </div>
+          </div>
+          <div class="app-card-footer">
+            <div class="row align-items-center">
+              <div class="col-9">
+                <p class="text-white m-b-0">% change</p>
+              </div>
+              <div class="col-3 text-right">
+                <i class="feather icon-trending-up text-white f-16"></i>
+              </div>
+            </div>
+          </div>
+        </app-card>
+      </div>
+
+      <div class="col-md-4">
+        <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-red">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h4 class="text-c-red">£14,500</h4>
+              <h6 class="text-muted m-b-0">Outstanding</h6>
+            </div>
+            <div class="col-4 text-right">
+              <i class="fas fa-pound-sign f-28"></i>
+            </div>
+          </div>
+          <div class="app-card-footer">
+            <div class="row align-items-center">
+              <div class="col-9">
+                <p class="text-white m-b-0">% change</p>
+              </div>
+              <div class="col-3 text-right">
+                <i class="feather icon-trending-down text-white f-16"></i>
+              </div>
+            </div>
+          </div>
+        </app-card>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="col-xl-6 col-md-12">
+    <app-card cardTitle="Uncultivated Plots" cardClass="table-card" blockClass="p-0">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>
+                <div class="chk-option">
+                  <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-label"></span>
+                  </label>
+                </div>
+                Member
+              </th>
+              <th>Site</th>
+              <th>Plot</th>
+              <th>Report Date</th>
+              <th class="text-right">Priority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="chk-option">
+                  <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-label"></span>
+                  </label>
+                </div>
+                <div class="d-inline-block align-middle">
+                  <img src="/assets/images/user/avatar-4.jpg" alt="user image"
+                    class="img-radius wid-40 align-top m-r-15">
+                  <div class="d-inline-block">
+                    <h6>John Deo</h6>
+                  </div>
+                </div>
+              </td>
+              <td>Hartswood</td>
+              <td>55</td>
+              <td>Jun, 26</td>
+              <td class="text-right"><label class="badge badge-light-danger">Low</label></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="chk-option">
+                  <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-label"></span>
+                  </label>
+                </div>
+                <div class="d-inline-block align-middle">
+                  <img src="/assets/images/user/avatar-2.jpg" alt="user image"
+                    class="img-radius wid-40 align-top m-r-15">
+                  <div class="d-inline-block">
+                    <h6>Jenifer Vintage</h6>
+                  </div>
+                </div>
+              </td>
+              <td>Hartswood</td>
+              <td>78</td>
+              <td>March, 31</td>
+              <td class="text-right"><label class="badge badge-light-primary">high</label></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="chk-option">
+                  <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-label"></span>
+                  </label>
+                </div>
+                <div class="d-inline-block align-middle">
+                  <img src="/assets/images/user/avatar-3.jpg" alt="user image"
+                    class="img-radius wid-40 align-top m-r-15">
+                  <div class="d-inline-block">
+                    <h6>William Jem</h6>
+                  </div>
+                </div>
+              </td>
+              <td>Ongar Road</td>
+              <td>1</td>
+              <td>Aug, 02</td>
+              <td class="text-right"><label class="badge badge-light-success">medium</label></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="chk-option">
+                  <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-label"></span>
+                  </label>
+                </div>
+                <div class="d-inline-block align-middle">
+                  <img src="/assets/images/user/avatar-2.jpg" alt="user image"
+                    class="img-radius wid-40 align-top m-r-15">
+                  <div class="d-inline-block">
+                    <h6>David Jones</h6>
+                  </div>
+                </div>
+              </td>
+              <td>Honeypot Lane</td>
+              <td>4</td>
+              <td>Sep, 22</td>
+              <td class="text-right"><label class="badge badge-light-primary">high</label></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+  <!-- Unclutivated Plots End -->
+
+  <!-- Unlet Plots -->
+  <div class="col-xl-6 col-md-12">
+    <app-card cardTitle="Unlet Plots" cardClass="table-card" blockClass="p-0">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>
+                <div class="chk-option">
+                  <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-label"></span>
+                  </label>
+                </div>
+                Site
+              </th>
+              <th>Plot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="chk-option">
+                  <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-label"></span>
+                  </label>
+                </div>
+                <div class="d-inline-block align-middle">
+                  <div class="d-inline-block">
+                    <h6>Hartswood</h6>
+                  </div>
+                </div>
+              </td>
+              <td>22</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="chk-option">
+                  <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-label"></span>
+                  </label>
+                </div>
+                <div class="d-inline-block align-middle">
+                  <div class="d-inline-block">
+                    <h6>Hartswood</h6>
+                  </div>
+                </div>
+              </td>
+              <td>36</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="chk-option">
+                  <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-label"></span>
+                  </label>
+                </div>
+                <div class="d-inline-block align-middle">
+                  <div class="d-inline-block">
+                    <h6>Ongar Road</h6>
+                  </div>
+                </div>
+              </td>
+              <td>15</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="chk-option">
+                  <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-label"></span>
+                  </label>
+                </div>
+                <div class="d-inline-block align-middle">
+                  <div class="d-inline-block">
+                    <h6>Honeypot Lane</h6>
+                  </div>
+                </div>
+              </td>
+              <td>2</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+  <!-- Unclutivated Plots End -->
+</div>

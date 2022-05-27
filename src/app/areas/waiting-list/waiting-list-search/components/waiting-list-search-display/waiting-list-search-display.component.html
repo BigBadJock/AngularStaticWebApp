@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-12">
+    <app-card cardTitle="" cardClass="table-card" blockClass="p-0" [hidHeader]="true">
+      <app-datagrid [columnDefinitions]="columnDefinitions" [data]="waitingList">
+      </app-datagrid>
+
+    </app-card>
+  </div>
+</div>
+<button id="addButton" class="btn btn-primary btn-icon float-button" (click)="addClick()">+</button>

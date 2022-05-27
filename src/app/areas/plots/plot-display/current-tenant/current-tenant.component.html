@@ -1,0 +1,28 @@
+<app-card [hidHeader]="true">
+  <h5 class="card-title">Current Tenancy:</h5>
+  <table *ngIf="tenant">
+    <tbody>
+      <tr>
+        <td>Current Tenant:</td>
+        <td><strong>{{tenant.title}} {{tenant.firstName}} {{tenant.lastName}}</strong></td>
+      </tr>
+      <tr>
+        <td>Tenancy Start:</td>
+        <td><strong>{{tenant.startDate | date: 'dd/MM/yyyy'}}</strong></td>
+      </tr>
+      <tr>
+        <td>Tenancy End:</td>
+        <td><strong>{{tenant.endDate | date: 'dd/MM/yyyy'}}</strong></td>
+      </tr>
+      <tr>
+        <td>Payment Status:</td>
+        <td><strong>{{tenant.paymentStatus}}</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="card-text" *ngIf="! tenant">
+    Unlet
+  </p>
+  <a href="javascript:" class="card-link">Edit</a>
+  <a href="javascript:" class="card-link">End Tenancy</a>
+</app-card>

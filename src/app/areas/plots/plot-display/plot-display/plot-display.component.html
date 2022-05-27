@@ -1,0 +1,21 @@
+<ng-container *ngIf="plot">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <app-plot-details [plot]="plot" (editClicked)="editPlot()"></app-plot-details>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <app-current-tenant [tenant]="currentTenancy"></app-current-tenant>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <app-card [hidHeader]="true" class="h-100">
+        <h5 class="card-title">Rental History</h5>
+
+        <app-datagrid [columnDefinitions]="columnDefinitions" [data]="historicalTenancies"></app-datagrid>
+
+      </app-card>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">New Site</h5>
+    <form [formGroup]="siteForm" autocomplete="off" novalidate>
+      <!-- name -->
+      <div class="form-group mb-3">
+        <label for="siteName">Site Name</label>
+        <input type="text" class="form-control" formControlName="siteName" placeholder="Site Name" required [ngClass]="{ 
+                                  'is-invalid' : siteName.touched && siteName.invalid, 
+                                  'is-valid': siteName.touched && ! siteName.invalid 
+                                }">
+        <div class="invalid-feedback" *ngIf="(siteName.dirty || siteName.touched) && siteName.invalid">
+          <div *ngIf="siteName.errors?.required">
+            Site Name is required
+          </div>
+          <div *ngIf="siteName.errors?.minlength">
+            Site Name must be at least 5 characters long.
+          </div>
+          <div *ngIf="siteName.errors?.maxlength">
+            Site Name must be no more than 100 characters long.
+          </div>
+        </div>
+      </div>
+
+      <!-- number of Plots -->
+      <div class="form-group mb-3">
+        <label for="noOfPlots">Number Of Plots</label>
+        <input type="number" class="form-control" formControlName="noOfPlots" placeholder="Number of Plots" required
+          [ngClass]="{ 
+            'is-invalid' : noOfPlots.touched && noOfPlots.invalid, 
+            'is-valid': noOfPlots.touched && ! noOfPlots.invalid 
+          }">
+        <div class="invalid-feedback" *ngIf="(noOfPlots.dirty || noOfPlots.touched) && noOfPlots.invalid">
+          <div *ngIf="noOfPlots.errors?.required">
+            Number of Plots is required
+          </div>
+          <div *ngIf="noOfPlots.errors?.min">
+            There must be at least 1 Plot
+          </div>
+          <div *ngIf="noOfPlots.errors?.max">
+            There can be no more than 250 plots.
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-group float-right" role="group">
+        <button id="saveButton" class="btn btn-success" [disabled]="!siteForm.valid" (click)="saveSite()">Save</button>
+        <button id="cancelButton" class="btn btn-danger" (click)="cancel()">Cancel</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

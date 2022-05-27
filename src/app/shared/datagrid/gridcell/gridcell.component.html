@@ -1,0 +1,23 @@
+<ng-container *ngIf="columnDefinition.dataType=='string'">
+  {{data}}
+</ng-container>
+<ng-container *ngIf="columnDefinition.dataType=='date'">
+  {{data | date : 'dd/MM/yyyy'}}
+</ng-container>
+<ng-container *ngIf="columnDefinition.dataType=='number'">
+  <p class="text-right">
+    {{data | number}}
+  </p>
+</ng-container>
+<ng-container *ngIf="columnDefinition.dataType=='boolean'">
+  <div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control custom-switch custom-control-input" [(ngModel)]="data" disabled="true">
+    <span class="custom-control-label"></span>
+  </div>
+</ng-container>
+<ng-container *ngIf="columnDefinition.dataType=='button'">
+  <button class="btn btn-primary" (click)="buttonClick()">{{columnDefinition.buttonText}}</button>
+</ng-container>
+<ng-container *ngIf="columnDefinition.dataType=='link'">
+  <a [routerLink]="routerLink" routerLinkActive="router-link-active">{{data}}</a>
+</ng-container>

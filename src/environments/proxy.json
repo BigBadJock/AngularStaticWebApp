@@ -1,0 +1,16 @@
+{
+  "/openweathermap/*": {
+    "target": "http://api.openweathermap.org/data/2.5/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "/openweathermap/*": ""
+    }
+  },
+  "/api/*": {
+    "target": "http://localhost:63976/",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

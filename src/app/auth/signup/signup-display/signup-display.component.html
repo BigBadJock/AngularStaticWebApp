@@ -1,0 +1,147 @@
+<div class="auth-wrapper">
+  <div class="auth-content text-center">
+    <img src="/assets/images/logo.png" alt="" class="img-fluid mb-4">
+    <div class="card borderless">
+      <div class="row align-items-center text-center">
+        <div class="col-md-12">
+          <div class="card-body">
+            <h4 class="f-w-400">Sign up</h4>
+            <hr>
+            <form [formGroup]="signupForm" autocomplete="off" novalidate>
+              <!-- firstName -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" required
+                  [ngClass]="{ 
+                    'is-invalid' : firstName.touched && firstName.invalid, 
+                    'is-valid': firstName.touched && ! firstName.invalid 
+                  }">
+                <div class="invalid-feedback" *ngIf="(firstName.dirty || firstName.touched) && firstName.invalid">
+                  <div *ngIf="firstName.errors?.required">
+                    First Name is required
+                  </div>
+                  <div *ngIf="firstName.errors?.minlength">
+                    First Name must be at least 2 characters long.
+                  </div>
+                  <div *ngIf="firstName.errors?.maxlength">
+                    First Name must be no more than 20 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <!-- lastName -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name" required
+                  [ngClass]="{ 'is-invalid' : lastName.touched && lastName.invalid, 'is-valid': lastName.touched && ! lastName.invalid }">
+                <div class="invalid-feedback" *ngIf="(lastName.dirty || lastName.touched) && lastName.invalid">
+                  <div *ngIf="lastName.errors?.required">
+                    Last Name is required
+                  </div>
+                  <div *ngIf="lastName.errors?.minlength">
+                    Last Name must be at least 2 characters long.
+                  </div>
+                  <div *ngIf="lastName.errors?.maxlength">
+                    Last Name must be no more than 20 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" formControlName="email" placeholder="Email address" required
+                  [ngClass]="{ 'is-invalid' : email.touched && email.invalid, 'is-valid': email.touched && ! email.invalid }">
+                <div class="invalid-feedback" *ngIf="(email.dirty || email.touched) && email.invalid">
+                  <div *ngIf="email.errors?.required || email.errors?.email">
+                    A valid email is required
+                  </div>
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="form-group mb-4">
+                <input type="password" class="form-control" formControlName="password" placeholder="Password" required
+                  [ngClass]="{ 'is-invalid' : password.touched && password.invalid, 'is-valid': password.touched && ! password.invalid }">
+                <div class="invalid-feedback" *ngIf="(password.dirty || password.touched) && password.invalid">
+                  <div *ngIf="password.errors?.required"
+                    [ngClass]="{'text-danger': password.errors?.required, 'text-success': ! password.errors?.required}">
+                    <i class="feather"
+                      [ngClass]="{'icon-alert-triangle': password.errors?.required, 'icon-check-circle': !password.errors?.required}"></i>
+                    A password is required
+                  </div>
+                  <ng-container *ngIf="!password.errors?.required">
+                    <div
+                      [ngClass]="{'text-danger': password.errors?.minlength, 'text-success': ! password.errors?.minlength}">
+                      <i class="feather" [ngClass]="{'icon-alert-triangle': password.errors?.minlength, 
+                        'icon-check-circle': !password.errors?.minlength}"></i>
+                      Password must be at least 12 characters long.
+                    </div>
+                    <div [ngClass]="{'text-danger': password.errors?.maxlength, 
+                      'text-success': ! password.errors?.maxlength}">
+                      <i class="feather" [ngClass]="{'icon-alert-triangle': password.errors?.maxlength, 
+                        'icon-check-circle': !password.errors?.maxlength}"></i>
+                      Password must be at no more than 99 characters long.
+                    </div>
+                    <div [ngClass]="{'text-danger': password.errors?.hasNumber, 
+                      'text-success': ! password.errors?.hasNumber}">
+                      <i class="feather" [ngClass]="{'icon-alert-triangle': password.errors?.hasNumber, 
+                        'icon-check-circle': !password.errors?.hasNumber}"></i>
+                      Password must contain a digit
+                    </div>
+                    <div [ngClass]="{'text-danger': password.errors?.hasUpperCase, 
+                      'text-success': ! password.errors?.hasUpperCase}">
+                      <i class="feather" [ngClass]="{'icon-alert-triangle': password.errors?.hasUpperCase, 
+                        'icon-check-circle': !password.errors?.hasUpperCase}"></i>
+                      Password must contain an upper case character
+                    </div>
+                    <div
+                      [ngClass]="{'text-danger': password.errors?.hasLowerCase, 'text-success': ! password.errors?.hasLowerCase}">
+                      <i class="feather" [ngClass]="{'icon-alert-triangle': password.errors?.hasLowerCase, 
+                        'icon-check-circle': !password.errors?.hasLowerCase}"></i>
+                      Password must contain an lower case character
+                    </div>
+                    <div [ngClass]="{'text-danger': password.errors?.hasSpecialCharacters, 
+                      'text-success': ! password.errors?.hasSpecialCharacters}">
+                      <i class="feather" [ngClass]="{'icon-alert-triangle': password.errors?.hasSpecialCharacters, 
+                        'icon-check-circle': !password.errors?.hasSpecialCharacters}"></i>
+                      Password must contain a special character
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+              <!-- Confirm Password -->
+              <div class="form-group mb-4">
+                <input type="password" class="form-control" formControlName="confirmPassword"
+                  placeholder="Confirm Password" required [ngClass]="{ 'is-invalid' : confirmPassword.touched && confirmPassword.invalid,
+                                            'is-valid': confirmPassword.touched && ! confirmPassword.invalid }">
+                <div class="invalid-feedback"
+                  *ngIf="(confirmPassword.dirty || confirmPassword.touched) && confirmPassword.invalid">
+                  <div *ngIf="confirmPassword.errors?.required">
+                    Password is Required
+                  </div>
+                  <div *ngIf="confirmPassword.errors?.PasswordMatch">
+                    Passwords do not match
+                  </div>
+                </div>
+              </div>
+              <button #signupButton class="btn btn-primary btn-block mb-4" (click)="submitForm()"
+                [disabled]="!signupForm.valid">Sign
+                up</button>
+              <p class="text-danger font-weight-bold error-message" *ngFor="let item of errors$ | async">
+                {{item}}
+              </p>
+              <hr>
+
+              <p class="mb-2">Already have an account? <a routerLink="/signin" class="f-w-400">Sign In</a></p>
+
+              <ng-container *ngIf="accountCreationSuccessful$ |async">
+                <p class="text-success lead">
+                  Your account has been created. An email has been sent to you to confirm your account.
+                </p>
+              </ng-container>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
