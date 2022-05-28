@@ -1,0 +1,16 @@
+BEGIN TRAN;
+
+DELETE FROM AspNetUserClaims WHERE
+   id > 16;
+
+DELETE FROM  AspNetUsers
+WHERE
+   id <> '838f9e00-0be8-435c-a681-c32e6e18f9f3';
+
+DELETE FROM Organisations
+WHERE
+   id <> 'F35BEF85-2BAA-4599-358E-08D8CAD8A125';
+
+--ROLLBACK;
+
+COMMIT;

@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "AllotmentFunctions": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ConfigurationEndpoint": "https://allotment-configurationstore.azconfig.io",
+        "ConfigurationConnectionString": "Endpoint=https://allotment-configurationstore.azconfig.io;Id=UZ1N-lo-s0:HHNIE9rutQsP/rW6n8jh;Secret=CNoEpHDB3gN/EykBNMWSXrcB9faALUx9tNVvsqfYuH4=",
+        "deploymentEnvironment": "dev",
+        "configKeys": "allotment*,dev"
+
+      }
+    }
+  }
+}

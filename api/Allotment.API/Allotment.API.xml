@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Allotment.API</name>
+    </assembly>
+    <members>
+        <member name="T:Allotment.API.AuthorizationAttribute.OrganisationAuthorizationHandler">
+            <summary>
+            OrganisationAuthorizationHandler - limits the user retrieving information to only the organisation allowed by the token
+            </summary>
+        </member>
+        <member name="M:Allotment.API.AuthorizationAttribute.OrganisationAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Allotment.API.AuthorizationAttribute.OrganisationAllowedRequirement,System.Guid)">
+            <summary>
+            Checks if a user has a claim allowing them to see the organisation 
+            </summary>
+            <param name="context"></param>
+            <param name="requirement"></param>
+            <param name="organisationId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Allotment.API.AuthorizationAttribute.OrganisationAllowedRequirement">
+            <summary>
+            OrganisationAllowedRequirement
+            </summary>
+        </member>
+        <member name="T:Allotment.API.Controllers.AccountController">
+            <summary>
+            Account Controller
+            </summary>
+        </member>
+        <member name="M:Allotment.API.Controllers.AccountController.Register(Allotment.DTOs.RegistrationCredentials)">
+            <summary>
+            Register a new user
+            </summary>
+            <param name="credentials"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Allotment.API.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Allotment.API.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Allotment.API.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>
